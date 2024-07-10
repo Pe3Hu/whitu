@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Element" load_steps=2 format=3 uid="uid://da5wip8mgck2i"]
+
+[ext_resource type="Script" path="res://resource/element/element.gd" id="1_u3jcx"]
+
+[resource]
+script = ExtResource("1_u3jcx")
+type = "void"
+color = Color(1, 1, 1, 1)
+values = Array[int]([])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Essence" load_steps=2 format=3 uid="uid://h4p0uf24ymuw"]
+
+[ext_resource type="Script" path="res://resource/element/element.gd" id="1_hignw"]
+
+[resource]
+script = ExtResource("1_hignw")
+type = "earth"
+color = Color(0.9, 0.63, 0.09, 1)
+values = Array[int]([2, 3, 4, 5, 6, 7, 8])

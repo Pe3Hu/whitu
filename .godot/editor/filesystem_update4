@@ -1,0 +1,10 @@
+res://scene/0/world.tscn
+res://resource/element/void.tres
+res://scene/3/essence.gd
+res://scene/2/spell.tscn
+res://scene/2/rune.tscn
+res://scene/3/essence.tscn
+res://scene/0/battle.tscn
+res://scene/1/mage.tscn
+res://scene/1/vortex.tscn
+res://scene/1/conveyor.tscn

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bseteyq6bu7a6"]
+
+[ext_resource type="PackedScene" uid="uid://1yohkulykj6" path="res://scene/1/mage.tscn" id="1_pwwsu"]
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mages" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Mage" parent="Mages" instance=ExtResource("1_pwwsu")]
+layout_mode = 2

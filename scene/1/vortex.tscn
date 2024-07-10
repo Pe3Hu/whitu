@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://sary0hafiwsr"]
+
+[ext_resource type="Script" path="res://scene/1/vortex.gd" id="1_rtw63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucd4p"]
+
+[node name="Vortex" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ucd4p")
+script = ExtResource("1_rtw63")
+
+[node name="Essences" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
