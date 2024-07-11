@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scene/2/rune.gd" id="1_l8vot"]
 [ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://asset/font/digital/Inter-Black.ttf" id="2_y5w7n"]
-[ext_resource type="PackedScene" uid="uid://362q3dr0jjrv" path="res://scene/3/essence.tscn" id="3_k231j"]
+[ext_resource type="PackedScene" uid="uid://4lxmwuco6ksy" path="res://scene/4/essence.tscn" id="3_kkkyf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4ta6"]
 
@@ -187,5 +187,6 @@ text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Essence" parent="." instance=ExtResource("3_k231j")]
-layout_mode = 2
+[node name="Essence" parent="." instance=ExtResource("3_kkkyf")]
+position = Vector2(30, 31)
+scale = Vector2(0.85, 0.85)

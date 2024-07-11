@@ -2,37 +2,43 @@
 class_name Spell extends PanelContainer
 
 
-@export_enum("creation", "preparation", "realization") var phase: String = "creation":
-	set(phase_):
-		phase = phase_
-		
-		match phase:
-			"creation","realization":
-				for rune in runes.get_children():
-					rune.cover.visible = false
-					rune.essence.visible = true
-			"preparation":
-				for rune in runes.get_children():
-					rune.cover.visible = true
-					rune.essence.visible = false
-	get:
-		return phase
+var slot_scene = preload("res://scene/4/slot.tscn")
 
-@onready var runes = $Runes
+#@export_enum("creation", "preparation", "realization") var phase: String = "creation":
+	#set(phase_):
+		#phase = phase_
+		#
+		#match phase:
+			#"creation","realization":
+				#for slot in slots.get_children():
+					#slot.cover.visible = false
+					#slot.essence.visible = true
+			#"preparation":
+				#for slot in slots.get_children():
+					#slot.cover.visible = true
+					#slot.essence.visible = false
+	#get:
+		#return phase
 
-var essences: Dictionary
+@onready var essences = $Essences
+@onready var slots = $Slots
+@onready var covers = $Covers
 
-func replicate(donor_: Spell) -> void:
-	for _i in donor_.runes.get_child_count():
-		var donor_rune = donor_.runes.get_child(_i)
-		var rune = runes.get_child(_i)
-		rune.essence.replicate(donor_rune.essence)
+var limit = 7
+var occupied_slots: Array[Slot]
+var accessible_slots: Array[Slot]
+
+
+func _ready() -> void:
+	await get_tree().process_frame
 	
-func place_essence_at(essence_: Essence, order_: int) -> void:
-	var rune = runes.get_child(order_)
-	essences[essence_] = rune
-	rune.essence.replicate(essence_)
+	for _i in limit:
+		add_slot()
 	
-func reset() -> void:
-	for rune in runes.get_children():
-		rune.reset()
+func add_slot() -> void:
+	var slot = slot_scene.instantiate()
+	var index = slots.get_child_count()
+	var grid = Vector2(index % limit, index / limit) + Vector2.ONE * 0.5
+	slot.position = Global.vec.size.slot * grid
+	slots.add_child(slot)
+	slot.panel = self

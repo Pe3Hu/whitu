@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw23gpvugwhlh"]
+
+[ext_resource type="Script" path="res://scene/4/slot.gd" id="1_fhkh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyi2k"]
+size = Vector2(64, 64)
+
+[node name="Slot" type="StaticBody2D" groups=["dropable"]]
+script = ExtResource("1_fhkh8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fyi2k")

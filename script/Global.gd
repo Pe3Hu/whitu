@@ -18,7 +18,7 @@ func _ready() -> void:
 	init_vec()
 	init_color()
 	init_dict()
-	init_node()
+	init_flag()
 	init_scene()
 
 
@@ -103,8 +103,8 @@ func init_blank() -> void:
 		dict.blank.rank[blank.rank].append(data)
 
 
-func init_node() -> void:
-	pass
+func init_flag() -> void:
+	flag.is_dragging = false
 
 
 func init_scene() -> void:
@@ -114,6 +114,7 @@ func init_scene() -> void:
 func init_vec():
 	vec.size = {}
 	vec.size.sixteen = Vector2(16, 16)
+	vec.size.slot = Vector2(64, 64)
 	
 	init_window_size()
 
@@ -167,3 +168,47 @@ func get_random_key(dict_: Dictionary):
 	
 	print("!bug! index_r error in get_random_key func")
 	return null
+
+
+func get_all_placements_based_on_size(options_: Dictionary, size_: int) -> Array:
+	var placements = {}
+	placements[1] = []
+	
+	for value in options_:
+		var placement = miniaturize(options_, {}, value)
+		
+		if !placements[1].has(placement):
+			placements[1].append(placement)
+	
+	for _i in range(2, size_ + 1, 1):
+		set_placements_based_on_size(placements, _i)
+	
+	return placements[size_]
+
+
+func set_placements_based_on_size(placements_: Dictionary, size_: int) -> void:
+	var parents = placements_[size_ - 1]
+	placements_[size_] = []
+	
+	for parent in parents:
+		for value in parent.options:
+			var placement = miniaturize(parent.options, parent.results, value)
+			
+			if !placements_[size_].has(placement):
+				placements_[size_].append(placement)
+
+func miniaturize(options_: Dictionary, results_: Dictionary, value_: int) -> Dictionary:
+	var miniature = {}
+	miniature.options = options_.duplicate()
+	miniature.options[value_] -= 1
+	miniature.results = results_.duplicate()
+	
+	if !miniature.results.has(value_):
+		miniature.results[value_] = 0
+	
+	miniature.results[value_] += 1
+	
+	if miniature.options[value_] == 0:
+		miniature.options.erase(value_)
+	
+	return miniature

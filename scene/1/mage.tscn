@@ -1,34 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://1yohkulykj6"]
+[gd_scene load_steps=5 format=3 uid="uid://1yohkulykj6"]
 
 [ext_resource type="Script" path="res://scene/1/mage.gd" id="1_6hep8"]
 [ext_resource type="PackedScene" uid="uid://sary0hafiwsr" path="res://scene/1/vortex.tscn" id="2_2ps4b"]
 [ext_resource type="PackedScene" uid="uid://bfksttfahfeb4" path="res://scene/2/spell.tscn" id="3_cbrat"]
-[ext_resource type="PackedScene" uid="uid://ctqyeq1tr0iqc" path="res://scene/1/conveyor.tscn" id="4_ey17u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbq8e"]
 
 [node name="Mage" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -60.0
+offset_right = 228.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bbq8e")
 script = ExtResource("1_6hep8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="VBox" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Vortex" parent="HBoxContainer/VBox" node_paths=PackedStringArray("mage") instance=ExtResource("2_2ps4b")]
-layout_mode = 2
-mage = NodePath("../../..")
-
-[node name="Spell" parent="HBoxContainer/VBox" instance=ExtResource("3_cbrat")]
+[node name="Offense" parent="VBox" instance=ExtResource("3_cbrat")]
 layout_mode = 2
 
-[node name="Conveyor" parent="HBoxContainer" instance=ExtResource("4_ey17u")]
+[node name="Vortex" parent="VBox" node_paths=PackedStringArray("mage") instance=ExtResource("2_2ps4b")]
+layout_mode = 2
+mage = NodePath("../..")
+
+[node name="Defense" parent="VBox" instance=ExtResource("3_cbrat")]
 layout_mode = 2

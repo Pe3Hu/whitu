@@ -1,11 +1,11 @@
 extends Node
 
 
-@export var zoom: float = 1.0:
-	set(zoom_):
-		zoom = zoom_
+@export var slot: float = 1.0:
+	set(slot_):
+		slot = slot_
 	get:
-		return zoom
+		return slot
 
 
 func _ready() -> void:
@@ -14,5 +14,3 @@ func _ready() -> void:
 	#Global.rng.randomize()
 	#var random = Global.rng.randi_range(0, 1)
 	pass
-
-
